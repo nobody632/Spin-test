@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Black Line with Rotate Script</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+    }
+    .black-line {
+      width: 80vw;
+      height: 20px;
+      background: #000;
+      border-radius: 5px;
+      box-shadow: 0 0 5px #0004;
+    }
+  </style>
+</head>
+<body>
+  <div class="black-line"></div>
+  <script>
+    document.documentElement.style.transitionDuration = "60s";
+    document.documentElement.style.transitionTimingFunction = "ease-in";
+    document.documentElement.style.transform = "rotate(360000deg)";
+  </script>
+</body>
+</html>
