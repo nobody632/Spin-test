@@ -2,11 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Black Line with Rotate Script</title>
+  <title>Rotating Black Line Demo</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -18,16 +17,38 @@
       height: 20px;
       background: #000;
       border-radius: 5px;
-      box-shadow: 0 0 5px #0004;
+      transition-property: transform;
+      /* We set the duration/timing in JS for clarity */
+    }
+    button {
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 0.6em 1.5em;
+      font-size: 1rem;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
+  <button id="rotateBtn">Start Rotation</button>
   <div class="black-line"></div>
   <script>
-    document.documentElement.style.transitionDuration = "60s";
-    document.documentElement.style.transitionTimingFunction = "ease-in";
-    document.documentElement.style.transform = "rotate(360000deg)";
+    const line = document.querySelector('.black-line');
+    const rotateBtn = document.getElementById('rotateBtn');
+
+    rotateBtn.addEventListener('click', () => {
+      // Set transition properties before changing transform
+      line.style.transitionDuration = "60s";
+      line.style.transitionTimingFunction = "ease-in";
+      // Force browser to apply transition settings before changing transform
+      setTimeout(() => {
+        line.style.transform = "rotate(360000deg)";
+      }, 30);
+      rotateBtn.disabled = true;
+      rotateBtn.textContent = "Rotating...";
+    });
   </script>
 </body>
 </html>
